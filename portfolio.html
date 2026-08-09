@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prasanna — Analytics Engineer & Data Platform Lead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7EDEA;
+    --ink:#1B2A2C;
+    --teal:#1C4E52;
+    --teal-dark:#123638;
+    --bronze:#A9714B;
+    --gold:#C99A3E;
+    --platinum:#5F7176;
+    --line:#E4D5D0;
+    --muted:#6B7A78;
+
+    /* ---- Hobby photo size — edit these two values ---- */
+    --photo-w:350px;   /* tile width  */
+    --photo-h:350px;   /* tile height */
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .measure{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- Site nav ---------- */
+  .sitenav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:28px 0 0;
+  }
+  .sitenav .mark{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:-.01em;
+  }
+  .sitenav .mark span{color:var(--gold);}
+  .sitenav .links{
+    display:flex;
+    gap:26px;
+  }
+  .sitenav .links a{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size:12.5px;
+    letter-spacing:.04em;
+    text-decoration:none;
+    color:var(--muted);
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .sitenav .links a:hover{color:var(--teal); border-color:var(--teal);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:grid;
+    grid-template-columns:1.3fr .7fr;
+    gap:56px;
+    align-items:center;
+    padding:64px 0 84px;
+  }
+  .eyebrow{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--bronze);
+    margin:0 0 16px;
+  }
+  h1{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight:600;
+    font-size:clamp(38px,5.4vw,58px);
+    line-height:1.04;
+    margin:0 0 18px;
+    letter-spacing:-.02em;
+  }
+  .role{
+    font-size:18px;
+    color:var(--teal-dark);
+    margin:0 0 26px;
+    max-width:46ch;
+    line-height:1.5;
+  }
+  .cta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .btn{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size:12px;
+    text-decoration:none;
+    padding:12px 20px;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn.primary{background:var(--teal); color:#F3EFE9;}
+  .btn.primary:hover{box-shadow:0 6px 16px rgba(28,78,82,.28);}
+  .btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--ink);}
+  .btn.ghost:hover{background:var(--ink); color:var(--bg);}
+
+  .photo-frame{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:28px;
+    background:
+      radial-gradient(120% 120% at 25% 15%, rgba(255,255,255,.14), transparent 55%),
+      linear-gradient(160deg, var(--teal), var(--teal-dark));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .photo-frame span{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size:52px;
+    font-weight:600;
+    color:#EFF4F2;
+  }
+  .photo-frame::after{
+    content:"";
+    position:absolute;
+    inset:-6px;
+    border-radius:32px;
+    border:1px solid var(--line);
+    z-index:-1;
+  }
+
+  /* ---------- About ---------- */
+  section.about{
+    padding:64px 0;
+    border-top:1px solid var(--line);
+  }
+  .label{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 22px;
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:.55fr 1fr;
+    gap:48px;
+  }
+  h2{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight:600;
+    font-size:28px;
+    margin:0;
+    line-height:1.2;
+  }
+  .about-grid p{
+    margin:0 0 16px;
+    font-size:16px;
+    line-height:1.75;
+    color:#2E4143;
+  }
+  .about-grid p:last-child{margin-bottom:0;}
+  .about-grid strong{color:var(--ink);}
+
+  /* ---------- Projects strip ---------- */
+  section.projects{
+    padding:0 0 64px;
+  }
+  .project-cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  .project-card{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:26px 24px;
+    background:#FCF7F4;
+    text-decoration:none;
+    color:var(--ink);
+    display:block;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .project-card:hover{border-color:var(--teal); transform:translateY(-2px);}
+  .project-card .k{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:block;
+    margin-bottom:10px;
+  }
+  .project-card h3{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size:19px;
+    margin:0 0 8px;
+  }
+  .project-card p{
+    margin:0;
+    font-size:14px;
+    color:var(--muted);
+    line-height:1.55;
+  }
+  .project-card .arrow{
+    display:inline-block;
+    margin-top:14px;
+    font-size:13px;
+    color:var(--teal-dark);
+  }
+
+  /* ---------- Hobbies ---------- */
+  section.hobbies{
+    padding:8px 0 60px;
+    border-top:1px solid var(--line);
+    padding-top:64px;
+  }
+  .hobby-groups{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:36px;
+    margin-top:26px;
+  }
+  .hobby-group h3{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size:20px;
+    margin:0 0 4px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .hobby-group h3 .dot{
+    width:8px;height:8px;border-radius:50%;
+  }
+  .hobby-group.hiking h3 .dot{background:var(--bronze);}
+  .hobby-group.cooking h3 .dot{background:var(--gold);}
+  .hobby-group p.note{
+    margin:0 0 16px;
+    font-size:14px;
+    color:var(--muted);
+    line-height:1.55;
+  }
+  .photo-grid{
+    display:flex;
+    flex-wrap:nowrap;
+    gap:6px;
+    overflow-x:auto;
+    padding-bottom:4px;
+  }
+  .photo-tile{
+    position:relative;
+    width:var(--photo-w);
+    height:var(--photo-h);
+    flex-shrink:0;
+    border-radius:14px;
+    overflow:hidden;
+    background:linear-gradient(155deg, var(--teal), var(--teal-dark));
+    border:1px solid var(--line);
+  }
+  .photo-tile img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .3s ease;
+  }
+  .photo-tile:hover img{transform:scale(1.06);}
+  .photo-tile .ph-label{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:8px;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size:10.5px;
+    line-height:1.5;
+    color:#DCE9E7;
+    background:
+      radial-gradient(120% 120% at 25% 15%, rgba(255,255,255,.10), transparent 55%),
+      linear-gradient(155deg, var(--teal), var(--teal-dark));
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:24px 0 48px;
+  }
+  footer .copy{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size:11.5px;
+    color:var(--muted);
+  }
+
+  @media (max-width:640px){
+    :root{ --photo-w:160px; --photo-h:160px; }
+  }
+
+  @media (max-width:760px){
+    .hero{grid-template-columns:1fr; padding-top:44px;}
+    .hero .photo-frame{order:-1; max-width:220px; margin:0 auto;}
+    .about-grid{grid-template-columns:1fr; gap:18px;}
+    .project-cards{grid-template-columns:1fr;}
+    .sitenav .links{gap:16px;}
+  }
+  @media (max-width:420px){
+    :root{ --photo-w:140px; --photo-h:140px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="measure">
+    <nav class="sitenav">
+      <div class="mark">prasanna<span>.</span></div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#" download>Resume</a>
+        <a href="#cert-card">Certifications</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Data & AI Candidate</p>
+        <h1>Prasanna Nahar</h1>
+        <p class="role">
+          Analytics Engineer & Data Platform Owner at a Lufthansa Aviation Training,
+          building governed Databricks lakehouse platforms — now moving into senior or leadership roles in Data & AI
+          across the EU markets.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#" download>Download Resume</a>
+          <a class="btn ghost" href="#projects">View Projects</a>
+        </div>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-grid">
+            <div class="photo-tile">
+              <span class="ph-label">images/main_page.jpeg</span>
+              <img src="images/main_page.jpeg" alt="main_page"
+                   onload="this.previousElementSibling.remove()"
+                   onerror="this.remove()">
+            </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-grid">
+        <div>
+          <p class="label">About</p>
+          <h2>Data & Beyond</h2>
+        </div>
+        <div>
+          <p>
+            I completed my <strong>Master’s in Data Science and International Project Management</strong> at a University of Applied Sciences in Berlin. That’s where my journey with data truly began.
+            Since then, I’ve had the opportunity to work in different roles across the data and business landscape, including <strong>Business Analyst, Customer Success Analyst, Data Analyst, and Analytics Engineer</strong>. 
+            Each role has given me a different perspective on how data can create value.
+          </p>
+          <p>
+            What I particularly love about working with data is that it sits at the <strong>intersection of business and technology</strong>. Many people think working with data is purely a technical role, but I see it as a much richer combination of both. You’re not just solving technical tickets, building pipelines, or creating dashboards. 
+            You’re trying to understand why something matters, what the business is trying to achieve, and how data can help solve real-world problems. That <strong>combination of analytical thinking, technical problem-solving, and business understanding is what I enjoy most about working with data.</strong>
+          </p>
+          <p>
+            With the rapid growth of AI, I believe the definition of “data” is also expanding. It’s no longer just about structured data sitting neatly in tables and databases.
+            <strong>Unstructured data, metadata, documents, conversations, images, and other forms of information will become increasingly important.</strong> The ability to connect, understand, govern, and make sense of all these different forms of data will play a key role in how organizations build and use AI.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <p class="label">Projects</p>
+      <div class="project-cards">
+        <a class="project-card" href="https://github.com/your-username" target="_blank" rel="noopener">
+          <span class="k">GitHub</span>
+          <h3>AI Projects</h3>
+          <p>Applied AI and LLM-driven work — experiments, prototypes, and tooling.</p>
+          <span class="arrow">View repo →</span>
+        </a>
+        <a class="project-card" href="https://github.com/your-username" target="_blank" rel="noopener">
+          <span class="k">GitHub</span>
+          <h3>Analytics Engineering Projects</h3>
+          <p>Data platform, pipeline, and modeling work — Databricks, dbt-style builds.</p>
+          <span class="arrow">View repo →</span>
+        </a>
+      </div>
+    </section> <div class="cert-card" id="cert-card">
+      <div class="label">Certifications</p>
+      <p class="issuer">Databricks Certified Data Engineer Associate · 2026</p>
+      <a href="https://credentials.databricks.com/ba362049-475a-4e3b-9127-c139a85cca9c#acc.8DetkZWp" target="_blank" rel="noopener">View credential →</a>
+    </div>
+    <section class="hobbies" id="hobbies">
+      <p class="label">Off the clock</p>
+      <div class="hobby-groups">
+
+        <div class="hobby-group hiking">
+          <h3><span class="dot"></span>Hiking</h3>
+          <p class="note">Standing in front of those vast, majestic peaks makes me feel calm, humble, and wonderfully small.</p>
+          <div class="photo-grid">
+            <div class="photo-tile">
+              <span class="ph-label">images/hiking-1.jpg</span>
+              <img src="images/hike1.jpeg" alt="Hiking photo 1"
+                   onload="this.previousElementSibling.remove()"
+                   onerror="this.remove()">
+            </div>
+            <div class="photo-tile">
+              <span class="ph-label">images/hiking-2.jpg</span>
+              <img src="images/hike2.jpeg" alt="Hiking photo 2"
+                   onload="this.previousElementSibling.remove()"
+                   onerror="this.remove()">
+            </div>
+          </div>
+        </div>
+
+        <div class="hobby-group cooking">
+          <h3><span class="dot"></span>Cooking</h3>
+          <p class="note">You can’t force the process; you just have to be patient, stay present, and let everything come together at its own pace.</p>
+          <div class="photo-grid">
+            <div class="photo-tile">
+              <span class="ph-label">images/cooking-1.jpg</span>
+              <img src="images/cooking_1.jpeg" alt="Cooking photo 1"
+                   onload="this.previousElementSibling.remove()"
+                   onerror="this.remove()">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      <div class="copy">© Prasanna</div>
+    </footer>
+  </div>
+
+</body>
+</html>
