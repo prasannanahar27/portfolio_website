@@ -133,6 +133,7 @@
     align-items:center;
     justify-content:center;
     position:relative;
+    overflow:hidden;
   }
   .photo-frame span{
     font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -147,6 +148,12 @@
     border-radius:32px;
     border:1px solid var(--line);
     z-index:-1;
+  }
+  .photo-frame .photo-tile{
+    width:100%;
+    height:100%;
+    border-radius:0;
+    border:none;
   }
 
   /* ---------- About ---------- */
@@ -183,52 +190,26 @@
   .about-grid p:last-child{margin-bottom:0;}
   .about-grid strong{color:var(--ink);}
 
-  /* ---------- Projects strip ---------- */
-  section.projects{
-    padding:0 0 64px;
-  }
-  .project-cards{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-  }
-  .project-card{
+  /* ---------- Certifications ---------- */
+  .cert-card{
     border:1px solid var(--line);
     border-radius:16px;
     padding:26px 24px;
     background:#FCF7F4;
-    text-decoration:none;
+    margin:0 0 64px;
+  }
+  .cert-card .issuer{
+    margin:0 0 10px;
+    font-size:15px;
     color:var(--ink);
-    display:block;
-    transition:border-color .15s ease, transform .15s ease;
   }
-  .project-card:hover{border-color:var(--teal); transform:translateY(-2px);}
-  .project-card .k{
+  .cert-card a{
     font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size:11px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--gold);
-    display:block;
-    margin-bottom:10px;
-  }
-  .project-card h3{
-    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size:19px;
-    margin:0 0 8px;
-  }
-  .project-card p{
-    margin:0;
-    font-size:14px;
-    color:var(--muted);
-    line-height:1.55;
-  }
-  .project-card .arrow{
-    display:inline-block;
-    margin-top:14px;
     font-size:13px;
     color:var(--teal-dark);
+    text-decoration:none;
   }
+  .cert-card a:hover{text-decoration:underline;}
 
   /* ---------- Hobbies ---------- */
   section.hobbies{
@@ -322,7 +303,6 @@
     .hero{grid-template-columns:1fr; padding-top:44px;}
     .hero .photo-frame{order:-1; max-width:220px; margin:0 auto;}
     .about-grid{grid-template-columns:1fr; gap:18px;}
-    .project-cards{grid-template-columns:1fr;}
     .sitenav .links{gap:16px;}
   }
   @media (max-width:420px){
@@ -337,7 +317,6 @@
       <div class="mark">prasanna<span>.</span></div>
       <div class="links">
         <a href="#about">About</a>
-        <a href="#projects">Projects</a>
         <a href="#hobbies">Hobbies</a>
         <a href="#" download>Resume</a>
         <a href="#cert-card">Certifications</a>
@@ -355,17 +334,15 @@
         </p>
         <div class="cta-row">
           <a class="btn primary" href="#" download>Download Resume</a>
-          <a class="btn ghost" href="#projects">View Projects</a>
         </div>
       </div>
       <div class="photo-frame">
-        <div class="photo-grid">
-            <div class="photo-tile">
-              <span class="ph-label">images/main_page.jpeg</span>
-              <img src="images/main_page.jpeg" alt="main_page"
-                   onload="this.previousElementSibling.remove()"
-                   onerror="this.remove()">
-            </div>
+        <div class="photo-tile">
+          <span class="ph-label">images/main_page.jpeg</span>
+          <img src="images/main_page.jpeg" alt="main_page"
+               onload="this.previousElementSibling.remove()"
+               onerror="this.remove()">
+        </div>
       </div>
     </section>
 
@@ -377,43 +354,28 @@
         </div>
         <div>
           <p>
-            I completed my <strong>Master’s in Data Science and International Project Management</strong> at a University of Applied Sciences in Berlin. That’s where my journey with data truly began.
-            Since then, I’ve had the opportunity to work in different roles across the data and business landscape, including <strong>Business Analyst, Customer Success Analyst, Data Analyst, and Analytics Engineer</strong>. 
+            I completed my <strong>Master's in Data Science and International Project Management</strong> at a University of Applied Sciences in Berlin. That's where my journey with data truly began.
+            Since then, I've had the opportunity to work in different roles across the data and business landscape, including <strong>Business Analyst, Customer Success Analyst, Data Analyst, and Analytics Engineer</strong>.
             Each role has given me a different perspective on how data can create value.
           </p>
           <p>
-            What I particularly love about working with data is that it sits at the <strong>intersection of business and technology</strong>. Many people think working with data is purely a technical role, but I see it as a much richer combination of both. You’re not just solving technical tickets, building pipelines, or creating dashboards. 
-            You’re trying to understand why something matters, what the business is trying to achieve, and how data can help solve real-world problems. That <strong>combination of analytical thinking, technical problem-solving, and business understanding is what I enjoy most about working with data.</strong>
+            What I particularly love about working with data is that it sits at the <strong>intersection of business and technology</strong>. Many people think working with data is purely a technical role, but I see it as a much richer combination of both. You're not just solving technical tickets, building pipelines, or creating dashboards.
+            You're trying to understand why something matters, what the business is trying to achieve, and how data can help solve real-world problems. That <strong>combination of analytical thinking, technical problem-solving, and business understanding is what I enjoy most about working with data.</strong>
           </p>
           <p>
-            With the rapid growth of AI, I believe the definition of “data” is also expanding. It’s no longer just about structured data sitting neatly in tables and databases.
+            With the rapid growth of AI, I believe the definition of "data" is also expanding. It's no longer just about structured data sitting neatly in tables and databases.
             <strong>Unstructured data, metadata, documents, conversations, images, and other forms of information will become increasingly important.</strong> The ability to connect, understand, govern, and make sense of all these different forms of data will play a key role in how organizations build and use AI.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="projects" id="projects">
-      <p class="label">Projects</p>
-      <div class="project-cards">
-        <a class="project-card" href="https://github.com/your-username" target="_blank" rel="noopener">
-          <span class="k">GitHub</span>
-          <h3>AI Projects</h3>
-          <p>Applied AI and LLM-driven work — experiments, prototypes, and tooling.</p>
-          <span class="arrow">View repo →</span>
-        </a>
-        <a class="project-card" href="https://github.com/your-username" target="_blank" rel="noopener">
-          <span class="k">GitHub</span>
-          <h3>Analytics Engineering Projects</h3>
-          <p>Data platform, pipeline, and modeling work — Databricks, dbt-style builds.</p>
-          <span class="arrow">View repo →</span>
-        </a>
-      </div>
-    </section> <div class="cert-card" id="cert-card">
-      <div class="label">Certifications</p>
+    <div class="cert-card" id="cert-card">
+      <p class="label">Certifications</p>
       <p class="issuer">Databricks Certified Data Engineer Associate · 2026</p>
       <a href="https://credentials.databricks.com/ba362049-475a-4e3b-9127-c139a85cca9c#acc.8DetkZWp" target="_blank" rel="noopener">View credential →</a>
     </div>
+
     <section class="hobbies" id="hobbies">
       <p class="label">Off the clock</p>
       <div class="hobby-groups">
@@ -439,7 +401,7 @@
 
         <div class="hobby-group cooking">
           <h3><span class="dot"></span>Cooking</h3>
-          <p class="note">You can’t force the process; you just have to be patient, stay present, and let everything come together at its own pace.</p>
+          <p class="note">You can't force the process; you just have to be patient, stay present, and let everything come together at its own pace.</p>
           <div class="photo-grid">
             <div class="photo-tile">
               <span class="ph-label">images/cooking-1.jpg</span>
